@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.fdca2610cae03b6194479f9203774083.css"],"names":[],"mappings":"AAIA,UACI,aAAe,CAClB","file":"app.fdca2610cae03b6194479f9203774083.css","sourcesContent":["\n#app {\n}\n\n.emp_name{\n    margin: 0 10px;\n}\n"]}
