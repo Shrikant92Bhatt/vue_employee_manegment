@@ -1,0 +1,67 @@
+<template>
+    <div id="new-employee">
+        <h3>New Employee</h3>
+        <div class="row">
+            <form @submit.prevent = "saveEmployee" class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="text" v-model="employee_id" required>
+                        <label >Employee ID#</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="text" v-model="name" required>
+                        <label >Name</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="text" v-model="department" required>
+                        <label >Department</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="text" v-model="position" required>
+                        <label >Position</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn gray">submit</button>
+                <router-link to="/" class="btn red">Cancel</router-link>
+            </form>
+        </div>
+    </div>
+</template>
+
+<script>
+    import db from './firebaseinit.js';
+
+    export default{
+        name: "new-employee",
+        data(){
+            return {
+                employee_id: null,
+                name : null,
+                department : null,
+                position : null
+            }
+        },
+        methods: {
+            saveEmployee(){
+                db.collection('emp').add({
+                    emp_id : this.employee_id,
+                    emp_name: this.name,
+                    emp_dept: this.department,
+                    emp_position: this.position
+                })
+                .then(docRef => {
+                    this.$router.push('/')}
+                )
+                .catch(error => console.log("Error")
+                )
+
+            }
+        }
+    }
+</script>
